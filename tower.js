@@ -8,8 +8,8 @@ const towerTypes = {
         projectileSpeed: 8,
         cost: 10,
         spritePath:"assets/towers/randomTowerV3.png",
-        aspectRatio: 94/88  // Hauteur/Largeur - à ajuster selon vos images
-        // Pourrait étre améliorer mais pour le moment le plus simple sans avoir à charger l'image
+        aspectRatio: 94/88,  // Hauteur/Largeur - à ajuster selon vos images // Pourrait étre améliorer mais pour le moment le plus simple sans avoir à charger l'image
+        adjustProjectileStartPosition : {x: 0, y: -10} // Ajuste la position initiale des tire pour correspondre à l'image
 
     },
     cannon: {
@@ -21,20 +21,21 @@ const towerTypes = {
         splashRadius: 50,
         cost: 25,
         spritePath:"assets/towers/randomTowerV2.png",
-        aspectRatio: 110/70  // Hauteur/Largeur - à ajuster selon vos images
+        aspectRatio: 110/70,  // Hauteur/Largeur - à ajuster selon vos images
+        adjustProjectileStartPosition : {x: 0, y: -40} 
 
     },
     ice: {
-        name : "Tour de Glace (30)",
+        name : "Tour de Glace (10)",
         damage: 10,
-        range: 140,
+        range: 200,
         fireRate: 1000,
         projectileSpeed: 7,
         slowEffect: true,
-        cost: 30,
+        cost: 10,
         spritePath:"assets/towers/randomTowerV2.png",
-        aspectRatio: 110/70  // Hauteur/Largeur - à ajuster selon vos images
-
+        aspectRatio: 110/70,  // Hauteur/Largeur - à ajuster selon vos images
+        adjustProjectileStartPosition : {x: 0, y: -40} 
     }
 };
 
@@ -174,9 +175,9 @@ class Tower {
         // Vérifier si assez de temps s'est écoulé depuis le dernier tir
         if (currentTime - this.lastShot < this.fireRate) return;
         
-        // Position centrale de la tour
-        const towerCenterX = this.x * this.gameMap.cellSize + this.gameMap.cellSize / 2;
-        const towerCenterY = this.y * this.gameMap.cellSize + this.gameMap.cellSize / 2;
+        // Position centrale de la cellule de la tour + un ajustement par rapport à l'image
+        const towerCenterX = this.x * this.gameMap.cellSize + this.gameMap.cellSize / 2 + this.adjustProjectileStartPosition.x;
+        const towerCenterY = this.y * this.gameMap.cellSize + this.gameMap.cellSize / 2 + this.adjustProjectileStartPosition.y;
         
         // Créer un projectile
         const projectile = new Projectile(
@@ -200,12 +201,13 @@ class Tower {
         }
     }
     
-    remove() {
-        if (this.element && this.element.parentNode) {
-            this.element.parentNode.removeChild(this.element);
-        }
-        if (this.rangeElement && this.rangeElement.parentNode) {
-            this.rangeElement.parentNode.removeChild(this.rangeElement);
-        }
-    }
+    // remove() {
+    //     console.log("remove")
+    //     if (this.element && this.element.parentNode) {
+    //         this.element.parentNode.removeChild(this.element);
+    //     }
+    //     if (this.rangeElement && this.rangeElement.parentNode) {
+    //         this.rangeElement.parentNode.removeChild(this.rangeElement);
+    //     }
+    // }
 }

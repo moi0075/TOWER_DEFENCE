@@ -97,9 +97,8 @@ body {
     background-color: #555;
 }
 
+/* tower shop */
 .tower {
-    /* paramétrage des towers a faire dans le js */
-    /* la taille est initialiser dans le fichier tower js pour coller au quadrillage */
     width: 60px;
     height: 60px;
     margin: 0 auto;
@@ -107,19 +106,6 @@ body {
     background-position: center;
     background-repeat: no-repeat;
 }
-
-/* Définit dans le js */
-/* .tower-basic {
-    background-image: url('assets/towers/randomTowerV2.png');
-}
-
-.tower-cannon {
-    background-color: #e74c3c;
-}
-
-.tower-ice {
-    background-color: #1abc9c;
-} */
 
 .tower-info {
     font-size: 12px;

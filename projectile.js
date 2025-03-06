@@ -20,6 +20,7 @@ class Projectile {
         // Positionner l'élément
         this.element.style.left = `${this.position.x}px`;
         this.element.style.top = `${this.position.y}px`;
+        this.element.style.zIndex = 999999999;
         
         // Ajouter au DOM
         document.getElementById('game-map').appendChild(this.element);
@@ -33,8 +34,8 @@ class Projectile {
         const dy = this.target.currentPosition.y - this.position.y;
         const distance = Math.sqrt(dx * dx + dy * dy);
         
-        // Si le projectile touche la cible
-        if (distance < this.speed) {
+        // Si le projectile touche la cible mettre enemie size
+        if (distance < 20) {
             this.hit = true;
             
             // Si c'est une tour avec dégâts de zone
