@@ -1,0 +1,215 @@
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+/* le fond de la page */
+body {
+    font-family: Arial, sans-serif;
+    background-color: #222;
+    color: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+
+.game-container {
+    /* width: 1000px; */
+    /* height: 800px; */
+    background-color: #333;
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.5);
+}
+
+.game-header {
+    padding: 10px;
+    background-color: #444;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.stats {
+    display: flex;
+    gap: 20px;
+}
+
+.controls button {
+    padding: 5px 10px;
+    background-color: #666;
+    border: none;
+    color: white;
+    border-radius: 4px;
+    cursor: pointer;
+    margin-left: 10px;
+}
+
+.controls button:hover {
+    background-color: #777;
+}
+
+.game-area {
+    position: relative;
+}
+
+/* Le terrain de jeu */
+.game-map {
+    /* taille initialiser dans le fichier map js pour coller au quadrillage*/
+    /* width: 800px;
+    height: 500px; */
+    background-color: #4a6d4a;
+    position: relative;
+    overflow: hidden;
+}
+
+.cell {
+    /* taille initialiser dans le fichier map js pour coller au quadrillage */
+    /* width: 49px;
+    height: 49px; */
+    position: absolute;
+    /* Débugger */
+    border: 1px solid #8d4040; 
+}
+
+.path {
+    background-color: #8b7355;
+}
+
+.tower-selection {
+    display: flex;
+    background-color: #444;
+    padding: 10px;
+    gap: 15px;
+    justify-content: center;
+}
+
+.tower-option {
+    text-align: center;
+    cursor: pointer;
+    padding: 5px;
+    border-radius: 4px;
+}
+
+.tower-option:hover {
+    background-color: #555;
+}
+
+.tower {
+    /* paramétrage des towers a faire dans le js */
+    /* la taille est initialiser dans le fichier tower js pour coller au quadrillage */
+    width: 60px;
+    height: 60px;
+    margin: 0 auto;
+    background-size: contain;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+
+/* Définit dans le js */
+/* .tower-basic {
+    background-image: url('assets/towers/randomTowerV2.png');
+}
+
+.tower-cannon {
+    background-color: #e74c3c;
+}
+
+.tower-ice {
+    background-color: #1abc9c;
+} */
+
+.tower-info {
+    font-size: 12px;
+    margin-top: 5px;
+}
+
+.enemy {
+    position: absolute;
+    border-radius: 50%;
+    transform: translate(-50%, -50%);
+    transition: left 0.1s linear, top 0.1s linear;
+}
+
+.enemy-basic {
+    background-color: red;
+    width: 20px;
+    height: 20px;
+}
+
+.enemy-fast {
+    background-color: yellow;
+    width: 16px;
+    height: 16px;
+}
+
+.enemy-tank {
+    background-color: purple;
+    width: 24px;
+    height: 24px;
+}
+
+.health-bar {
+    position: absolute;
+    height: 4px;
+    background-color: green;
+    top: -7px;
+    left: 0;
+    transition: width 0.2s;
+}
+
+.projectile {
+    position: absolute;
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.projectile-basic {
+    background-color: #3498db;
+}
+
+.projectile-cannon {
+    background-color: #e74c3c;
+}
+
+.projectile-ice {
+    background-color: #1abc9c;
+}
+
+.game-over {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.8);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 10;
+}
+
+.hidden {
+    display: none;
+}
+
+.game-over-content {
+    background-color: #333;
+    padding: 40px;
+    border-radius: 8px;
+    text-align: center;
+}
+
+#restart {
+    margin-top: 20px;
+    padding: 10px 20px;
+    background-color: #2ecc71;
+    border: none;
+    color: white;
+    border-radius: 4px;
+    cursor: pointer;
+}

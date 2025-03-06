@@ -1,0 +1,67 @@
+Utilisation d'images pour les tours plutôt que des cercles colorés
+Pour remplacer les cercles colorés par des images pour vos tours, vous devez modifier à la fois votre CSS et votre JavaScript. Voici comment implémenter ce changement:
+
+1. Modification du CSS pour utiliser des images
+2. Vérification du chemin des images
+Assurez-vous que les chemins relatifs vers les images sont corrects. Si votre structure de fichiers est:
+
+Alors les chemins 'assets/towers/randomTower.png' dans le CSS sont corrects.
+
+3. Modification optionnelle dans createTowerElement
+Si vous voulez être sûr que les images sont bien chargées, vous pouvez aussi modifier la méthode createTowerElement() dans tower.js:
+
+4. Autres ajustements possibles
+Si vous souhaitez supprimer l'aspect circulaire des tours, modifiez ou supprimez border-radius: 50%; dans la classe .tower du CSS
+Assurez-vous que vos images ont une taille appropriée ou ajustez les dimensions dans le CSS si nécessaire
+Cette implémentation utilisera la même image pour toutes les tours, mais vous pourrez facilement utiliser des images différentes pour chaque type de tour quand vous en aurez.
+
+.tower {
+    width: 40px;
+    height: 40px;
+    margin: 0 auto;
+    background-size: contain;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+
+.tower-basic {
+    background-image: url('assets/towers/randomTower.png');
+    /* background-color: #3498db; -- commenté ou supprimé */
+}
+
+.tower-cannon {
+    background-image: url('assets/towers/randomTower.png');
+    /* background-color: #e74c3c; -- commenté ou supprimé */
+}
+
+.tower-ice {
+    background-image: url('assets/towers/randomTower.png');
+    /* background-color: #1abc9c; -- commenté ou supprimé */
+}
+
+
+createTowerElement() {
+    // Position en pixels
+    const pixelX = this.x * this.gameMap.cellSize;
+    const pixelY = this.y * this.gameMap.cellSize;
+    
+    // Créer l'élément de la tour
+    this.element = document.createElement('div');
+    this.element.className = `tower tower-${this.type}`;
+    this.element.style.position = 'absolute';
+    this.element.style.left = `${pixelX}px`;
+    this.element.style.top = `${pixelY}px`;
+    
+    // Si vous préférez définir l'image directement en JS plutôt qu'en CSS
+    // this.element.style.backgroundImage = `url('assets/towers/randomTower.png')`;
+    // this.element.style.backgroundSize = 'contain';
+    // this.element.style.backgroundPosition = 'center';
+    // this.element.style.backgroundRepeat = 'no-repeat';
+    // this.element.style.borderRadius = '0'; // Supprimer l'aspect circulaire si vous le souhaitez
+    
+    // ... reste du code ...
+}
+
+
+// Tester ligne droite avec un seule chemin
+// Tire se détruit pas au centre mais à l'extérieur !!!

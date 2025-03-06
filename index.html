@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tower Defense</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="game-container">
+        <div class="game-header">
+            <div class="stats">
+                <div class="lives">Vies: <span id="lives">20</span></div>
+                <div class="money">Or: <span id="money">100</span></div>
+                <div class="wave">Vague: <span id="wave">1</span></div>
+            </div>
+            <div class="controls">
+                <button id="start-wave">Lancer la vague</button>
+                <button id="speed-toggle">Vitesse x1</button>
+            </div>
+        </div>
+        
+        <!-- Le plateu de jeu -->
+        <div class="game-area">
+            <div id="game-map" class="game-map"></div>
+        </div>
+
+        <!-- Le shop -->
+        <div class="tower-selection">
+        </div>
+
+    </div>
+
+    <div id="game-over" class="game-over hidden">
+        <div class="game-over-content">
+            <h2>Game Over!</h2>
+            <p>Vous avez survécu <span id="final-wave">0</span> vagues.</p>
+            <button id="restart">Recommencer</button>
+        </div>
+    </div>
+
+    <script src="map.js"></script>
+    <script src="enemy.js"></script>
+    <script src="function.js"></script>
+    <script src="tower.js"></script>
+    <script src="projectile.js"></script>
+    <script src="game.js"></script>
+</body>
+</html>
